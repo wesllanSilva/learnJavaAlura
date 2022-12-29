@@ -2,18 +2,29 @@ package bytebank;
 
 public class testaMetodo {
 	public static void main(String[] args) {
-		Conta contaDoPedro = new Conta();
-		
-		contaDoPedro.saldo = 10;
-		contaDoPedro.deposita(100);
-		
-		System.out.println("Saldo da conta do Pedro é: R$" + contaDoPedro.saldo);
-		contaDoPedro.saca(50);
-		System.out.println("agora saldo da conta do Pedro é: R$" + contaDoPedro.saldo);
-		
-		Conta contaDoCarlos = new Conta();
-		contaDoPedro.transfere(25, contaDoCarlos);
-		System.out.println("Saldo da conta do Carlos é: R$" + contaDoCarlos.saldo);
+		Conta contaDoPaulo = new Conta(6646,969060);
+		contaDoPaulo.deposita(100);
+		contaDoPaulo.deposita(50);
+		System.out.println(contaDoPaulo.getSaldo());
 
+		boolean conseguiuRetirar = contaDoPaulo.saca(20);
+		System.out.println(contaDoPaulo.getSaldo());
+		System.out.println(conseguiuRetirar);
+
+		Conta contaDaMarcela = new Conta(6644,969063);
+		contaDaMarcela.deposita(1000);
+
+		boolean sucessoTransferencia = contaDaMarcela.transfere(300, contaDoPaulo);
+
+		if (sucessoTransferencia) {
+			System.out.println("transferencia com sucesso");
+
+		} else {
+			System.out.println("faltou dinheiro");
+
+		}
+		System.out.println(contaDaMarcela.getSaldo());
+		System.out.println(contaDoPaulo.getSaldo());
 	}
+
 }
